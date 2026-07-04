@@ -22,13 +22,39 @@ function Temperature() {
             return;
         }
 
-        
-    }
+        let convertedTemp;
+        if(fromUnit ===  toUnit){
+            convertTemp = temp;
+        }
+        else if(fromUnit === "Celcius" && toUnit === "Fahrenheit"){
+            convertTemp = (temp * 1.8) + 32;
+        }
+        else if(fromUnit === "Celcius" && toUnit === "kelvin"){
+            convertTemp = temp + 273.15;
+        }
+        else if(fromUnit === "Fahrenheit" && toUnit === "Celsius"){
+            convertedTemp = (temp - 32) * 5 / 9;
+        }
+        else if(fromUnit === "Fahrenheit" && toUnit === "kelvin"){
+            convertedTemp = (temp - 32) * 5 / 9 + 273.15;
+        }
+        else if(fromUnit === "Kelvin" && toUnit === "Celsius"){
+            convertedTemp = temp - 273.15;
+        }
+        else if(fromUnit === "Kelvin" && toUnit === "Fahrenheit"){
+            convertedTemp = (temp - 273.15) * 9 / 5 + 32;
+        }
+
+        setResult(
+            `${temp}° ${fromUnit} = ${convertTemp.toFixed(2)}° ${toUnit}`
+        );
+    };
 
         const resetData = () =>{
         setTemperature("")
-        setConversion("ctof")
-        result(null)
+        setFromUnit("Celsius");
+        setToUnit("Fahrenheit");
+        result(null);
     }
 
 
@@ -110,13 +136,20 @@ function Temperature() {
                         </button>
 
                     </div>
-                        {result && (
-                            <div className="mt-6 bg-blue-100 border border-blue-300 rounded-lg p-4 text-center">
-                                <p className="text-xl font-semibold  text-blue-700">
-                                    {result}
-                                </p>
-                            </div>      
-                        )}
+                        
+                        {
+                            result && (
+                                <div className="mt-6 bg-blue-50 border border-blue-300 rounded-xl p-4 text-center shadow-md">
+                                    <h2 className="text-lg font-semibold text-gray-700">
+                                        Result
+                                    </h2>
+
+                                    <p className="text-2xl font-bold text-blue-700 mt-2">
+                                        {result}
+                                    </p>
+                                </div>
+                            )
+                        }
 
                 </div>
 
