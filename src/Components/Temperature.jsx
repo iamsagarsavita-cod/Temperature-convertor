@@ -15,6 +15,13 @@ function Temperature() {
             return;
         }
 
+        const temp = Number(temperature);
+
+        if(isNaN(temp)){
+            alert("Enter valid temperature");
+            return;
+        }
+
         
     }
 
@@ -103,7 +110,13 @@ function Temperature() {
                         </button>
 
                     </div>
-                       
+                        {result && (
+                            <div className="mt-6 bg-blue-100 border border-blue-300 rounded-lg p-4 text-center">
+                                <p className="text-xl font-semibold  text-blue-700">
+                                    {result}
+                                </p>
+                            </div>      
+                        )}
 
                 </div>
 
