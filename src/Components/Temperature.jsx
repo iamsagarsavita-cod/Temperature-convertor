@@ -72,7 +72,7 @@ function Temperature() {
         style={{ backgroundImage: `url(${bgImage})` }}
       >
 
-        <div className="bg-white p-8 rounded-2xl shadow-2xl w-[500px]">
+        <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-lg">
 
             {/* HEADING SECTION  */}
           <div className="text-center mb-6">
