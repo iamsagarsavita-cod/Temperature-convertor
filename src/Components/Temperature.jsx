@@ -7,7 +7,7 @@ function Temperature() {
     const [temperature, setTemperature] = useState("");
     const [fromUnit, setFromUnit] = useState("Celsius");
     const [toUnit, setToUnit] = useState("Fahrenheit");
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState("");
 
     const convertTemp = () =>{
         if(temperature.trim() === ""){
@@ -24,15 +24,15 @@ function Temperature() {
 
         let convertedTemp;
         if(fromUnit ===  toUnit){
-            convertTemp = temp;
+            convertedTemp = temp;
         }
-        else if(fromUnit === "Celcius" && toUnit === "Fahrenheit"){
-            convertTemp = (temp * 1.8) + 32;
+        else if(fromUnit === "Celsius" && toUnit === "Fahrenheit"){
+            convertedTemp = (temp * 1.8) + 32;
         }
-        else if(fromUnit === "Celcius" && toUnit === "kelvin"){
-            convertTemp = temp + 273.15;
+        else if(fromUnit === "Celsius" && toUnit === "kelvin"){
+            convertedTemp = temp + 273.15;
         }
-        else if(fromUnit === "Fahrenheit" && toUnit === "Celsius"){
+        else if(fromUnit === "Fahrenheit" && toUnit === "Ceclsius"){
             convertedTemp = (temp - 32) * 5 / 9;
         }
         else if(fromUnit === "Fahrenheit" && toUnit === "kelvin"){
@@ -46,7 +46,7 @@ function Temperature() {
         }
 
         setResult(
-            `${temp}° ${fromUnit} = ${convertTemp.toFixed(2)}° ${toUnit}`
+            `${temp}° ${fromUnit} = ${convertedTemp.toFixed(2)}° ${toUnit}`
         );
     };
 
@@ -54,7 +54,7 @@ function Temperature() {
         setTemperature("")
         setFromUnit("Celsius");
         setToUnit("Fahrenheit");
-        result(null);
+        setResult("");
     }
 
 
@@ -139,7 +139,7 @@ function Temperature() {
                         
                         {
                             result && (
-                                <div className="mt-6 bg-blue-50 border border-blue-300 rounded-xl p-4 text-center shadow-md">
+                                <div className="mt-6 bg-green-200 border border-blue-300 rounded-xl p-4 text-center shadow-md">
                                     <h2 className="text-lg font-semibold text-gray-700">
                                         Result
                                     </h2>
