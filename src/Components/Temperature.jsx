@@ -7,8 +7,7 @@ function Temperature() {
   const [toUnit, setToUnit] = useState("Fahrenheit");
   const [result, setResult] = useState("");
 
-
-// CONVERT BUTTON KI FUNCTIONALITY
+  // CONVERT BUTTON KI FUNCTIONALITY
   const convertTemp = () => {
     if (temperature.trim() === "") {
       alert("Enter the temperature");
@@ -40,16 +39,13 @@ function Temperature() {
     }
 
     if (convertedTemp === undefined) {
-        alert("Conversion not supported");
-        return;
+      alert("Conversion not supported");
+      return;
     }
 
-    setResult(
-        `${temp}° ${fromUnit} = ${convertedTemp.toFixed(2)}° ${toUnit}`
-    );
-
+    setResult(`${temp}° ${fromUnit} = ${convertedTemp.toFixed(2)}° ${toUnit}`);
   };
-// RESET BUTTON KI FUNCIONALITY
+  // RESET BUTTON KI FUNCIONALITY
   const resetData = () => {
     setTemperature("");
     setFromUnit("Celsius");
@@ -57,13 +53,11 @@ function Temperature() {
     setResult("");
   };
 
-//   SWAP BUTTON KE FUNCTIONALITY
+  //   SWAP BUTTON KE FUNCTIONALITY
   const swapUnits = () => {
-        setFromUnit(toUnit);
-        setToUnit(fromUnit);
-    };
-
-  
+    setFromUnit(toUnit);
+    setToUnit(fromUnit);
+  };
 
   return (
     <>
@@ -71,10 +65,8 @@ function Temperature() {
         className="min-h-screen flex items-center justify-center bg-cover bg-center "
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-
         <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-lg">
-
-            {/* HEADING SECTION  */}
+          {/* HEADING SECTION  */}
           <div className="text-center mb-6">
             <h1 className="text-3xl text-center font-bold text-gray-800">
               🌡️ Temperature Converter
@@ -88,12 +80,11 @@ function Temperature() {
             value={temperature}
             onChange={(e) => setTemperature(e.target.value)}
             // ENTER KARNE PER RESULT AAYE
-            onKeyDown={(e)=>{
-                    if(e.key==="Enter"){
-                        convertTemp();
-                    }
-                }
-            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                convertTemp();
+              }
+            }}
           />
 
           <div className="flex items-end gap-4 mb-6">
@@ -158,7 +149,7 @@ function Temperature() {
             </button>
           </div>
 
-            {/* RESULT DATA SECTION */}
+          {/* RESULT DATA SECTION */}
           {result && (
             <div className="mt-6 bg-green-200 border border-blue-300 rounded-xl p-4 text-center shadow-md">
               <h2 className="text-lg font-semibold text-gray-700">Result</h2>
